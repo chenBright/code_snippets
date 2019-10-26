@@ -4,4 +4,4 @@
 
 ## C++
 
-- [split](https://github.com/chenBright/code_snippets/blob/280f0818dccfc3382f8de84beb6ce92ba961dcb9/C++/split/README.md)
+- [split](https://github.com/chenBright/code_snippets/blob/master/C%2B%2B/split/README.md)

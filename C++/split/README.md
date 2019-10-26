@@ -123,7 +123,7 @@ void split(const std::string& str,
 
 ## 源码
 
-[Github](https://github.com/chenBright/code_snippets/blob/280f0818dccfc3382f8de84beb6ce92ba961dcb9/C++/split)
+[Github](https://github.com/chenBright/code_snippets/blob/master/C%2B%2B/split/)
 
 ## 参考
 
