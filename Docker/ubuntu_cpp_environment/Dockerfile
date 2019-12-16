@@ -42,7 +42,7 @@ RUN sed -ri 's/^plugins=.*/plugins=(git autojump zsh-syntax-highlighting zsh-aut
 RUN apt install -y build-essential
 RUN apt install -y cmake
 RUN apt install -y gdb gdbserver
-RUN apt install -y rsync
+RUN apt install -y rsync # Clion 需要 rsync 同步数据
 RUN apt install -y vim
 
 # ssh服务器
