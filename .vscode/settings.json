@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "*.cu": "cuda",
-        "__split_buffer": "cpp",
-        "deque": "cpp",
-        "vector": "cpp",
-        "*.tcc": "cpp"
-    }
-}
