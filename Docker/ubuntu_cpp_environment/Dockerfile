@@ -51,10 +51,7 @@ RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
 # 安装 zsh-autosuggestions 插件
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# 安装 git-open 插件
-RUN git clone https://github.com/paulirish/git-open.git \
-    ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-open
-RUN sed -ri 's/^plugins=.*/plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions git-open)/' ~/.zshrc
+RUN sed -ri 's/^plugins=.*/plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc
 
 
 # 删除 apt update 产生的缓存文件

@@ -64,7 +64,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 ## Zsh
 
-参考[把zsh放到docker里](https://blog.phpgao.com/zsh_in_docker.html)先将 Bash 换成 Zsh。
+参考[把zsh放到docker里](https://blog.phpgao.com/zsh_in_docker.html)这篇文章，将 Bash 换成 Zsh。
 
 ```dockerfile
 RUN apt install -y zsh
@@ -87,10 +87,7 @@ RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
 # 安装 zsh-autosuggestions 插件
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# 安装 git-open 插件
-RUN git clone https://github.com/paulirish/git-open.git \
-    ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-open
-RUN sed -ri 's/^plugins=.*/plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions git-open)/' ~/.zshrc
+RUN sed -ri 's/^plugins=.*/plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc
 ```
 
 ## Dockerfile
