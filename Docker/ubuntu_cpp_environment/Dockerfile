@@ -40,7 +40,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 # zsh
 RUN apt install -y zsh
-RUN git clone https://github.do/https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
+RUN git clone https://github.91chi.fun//https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
     && chsh -s /bin/zsh
 RUN echo $SHELL
@@ -52,10 +52,10 @@ RUN echo $SHELL
 RUN apt install -y autojump 
 # 安装 zsh-syntax-highlighting 插件
 # 将所有GitHub链接替换成墙内加速链接，在不翻墙的情况下使用
-RUN git clone https://github.do/https://github.com/zsh-users/zsh-syntax-highlighting.git \
+RUN git clone https://github.91chi.fun//https://github.com/zsh-users/zsh-syntax-highlighting.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # 安装 zsh-autosuggestions 插件
-RUN git clone https://github.do/https://github.com/zsh-users/zsh-autosuggestions.git \
+RUN git clone https://github.91chi.fun//https://github.com/zsh-users/zsh-autosuggestions.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 RUN sed -ri 's/^plugins=.*/plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc
 
