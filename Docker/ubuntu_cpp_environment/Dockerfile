@@ -3,21 +3,26 @@
 # https://www.binss.me/blog/learn-docker-with-me-about-building-compiler-environment/
 # https://blog.phpgao.com/zsh_in_docker.html
 
-From ubuntu:latest
-LABEL chenBright <1021774709@qq.com>
+FROM ubuntu:18.04
+LABEL org.opencontainers.image.authors="chenBright<1021774709@qq.com>,zafirshi<office_makeit@163.com>"
+
 
 # 换源
+# Note:这里是apt-get的update而非apt直接update，否则包会不全
+# Clion 需要 rsync 同步数据
 RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
+    sed -i s@/security.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
     apt clean && \
-    apt update
+    apt-get update && \     
+    apt install -y \
+    build-essential\
+    cmake \
+    gdb \
+    gdbserver \
+    rsync \
+    vim \
+    git
 
-# 编译工具
-RUN apt install -y build-essential
-RUN apt install -y cmake
-RUN apt install -y gdb gdbserver
-RUN apt install -y rsync # Clion 需要 rsync 同步数据
-RUN apt install -y vim # vim
-RUN apt install -y git # git
 
 # ssh服务器
 # 参考 https://github.com/rastasheep/ubuntu-sshd/blob/ed6fffcaf5a49eccdf821af31c1594e3c3061010/18.04/Dockerfile
@@ -35,7 +40,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 # zsh
 RUN apt install -y zsh
-RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
+RUN git clone https://github.91chi.fun//https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
     && chsh -s /bin/zsh
 RUN echo $SHELL
@@ -44,12 +49,13 @@ RUN echo $SHELL
 # https://segmentfault.com/a/1190000015283092
 # https://juejin.im/post/5cf34558f265da1b80202d75
 # 安装 autojump 插件
-RUN apt install -y autojump
+RUN apt install -y autojump 
 # 安装 zsh-syntax-highlighting 插件
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+# 将所有GitHub链接替换成墙内加速链接，在不翻墙的情况下使用
+RUN git clone https://github.91chi.fun//https://github.com/zsh-users/zsh-syntax-highlighting.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # 安装 zsh-autosuggestions 插件
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions \
+RUN git clone https://github.91chi.fun//https://github.com/zsh-users/zsh-autosuggestions.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 RUN sed -ri 's/^plugins=.*/plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc
 
@@ -65,4 +71,3 @@ RUN apt clean && \
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
-
